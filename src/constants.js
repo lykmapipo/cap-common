@@ -74,3 +74,32 @@ export const CAP_SCOPES = getStringSet('CAP_SCOPES', [
   CAP_SCOPE_RESTRICTED,
   CAP_SCOPE_PRIVATE,
 ]);
+
+// categories
+export const CAP_CATEGORY_GEO = 'Geo';
+export const CAP_CATEGORY_MET = 'Met';
+export const CAP_CATEGORY_SAFETY = 'Safety';
+export const CAP_CATEGORY_SECURITY = 'Security';
+export const CAP_CATEGORY_RESCUE = 'Rescue';
+export const CAP_CATEGORY_FIRE = 'Fire';
+export const CAP_CATEGORY_HEALTH = 'Health';
+export const CAP_CATEGORY_ENV = 'Env';
+export const CAP_CATEGORY_TRANSPORT = 'Transport';
+export const CAP_CATEGORY_INFRA = 'Infra';
+export const CAP_CATEGORY_CBRNE = 'CBRNE';
+export const CAP_CATEGORY_OTHER = 'Other';
+export const CAP_CATEGORIES = getStringSet('CAP_CATEGORIES', [
+  CAP_DEFAULT_CATEGORY,
+  CAP_CATEGORY_GEO,
+  CAP_CATEGORY_MET,
+  CAP_CATEGORY_SAFETY,
+  CAP_CATEGORY_SECURITY,
+  CAP_CATEGORY_RESCUE,
+  CAP_CATEGORY_FIRE,
+  CAP_CATEGORY_HEALTH,
+  CAP_CATEGORY_ENV,
+  CAP_CATEGORY_TRANSPORT,
+  CAP_CATEGORY_INFRA,
+  CAP_CATEGORY_CBRNE,
+  CAP_CATEGORY_OTHER,
+]);

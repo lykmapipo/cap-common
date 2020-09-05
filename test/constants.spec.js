@@ -29,6 +29,19 @@ import {
   CAP_SCOPE_PRIVATE,
   CAP_SCOPE_RESTRICTED,
   CAP_SCOPES,
+  CAP_CATEGORY_CBRNE,
+  CAP_CATEGORY_ENV,
+  CAP_CATEGORY_FIRE,
+  CAP_CATEGORY_GEO,
+  CAP_CATEGORY_HEALTH,
+  CAP_CATEGORY_INFRA,
+  CAP_CATEGORY_MET,
+  CAP_CATEGORY_OTHER,
+  CAP_CATEGORY_RESCUE,
+  CAP_CATEGORY_SAFETY,
+  CAP_CATEGORY_SECURITY,
+  CAP_CATEGORY_TRANSPORT,
+  CAP_CATEGORIES,
 } from '../src/constants';
 
 describe('constants', () => {
@@ -119,6 +132,35 @@ describe('constants', () => {
       CAP_SCOPE_PRIVATE,
       CAP_SCOPE_PUBLIC,
       CAP_SCOPE_RESTRICTED,
+    ]);
+  });
+
+  it('should have categories', () => {
+    expect(CAP_CATEGORY_GEO).to.be.equal('Geo');
+    expect(CAP_CATEGORY_MET).to.be.equal('Met');
+    expect(CAP_CATEGORY_SAFETY).to.be.equal('Safety');
+    expect(CAP_CATEGORY_SECURITY).to.be.equal('Security');
+    expect(CAP_CATEGORY_RESCUE).to.be.equal('Rescue');
+    expect(CAP_CATEGORY_FIRE).to.be.equal('Fire');
+    expect(CAP_CATEGORY_HEALTH).to.be.equal('Health');
+    expect(CAP_CATEGORY_ENV).to.be.equal('Env');
+    expect(CAP_CATEGORY_TRANSPORT).to.be.equal('Transport');
+    expect(CAP_CATEGORY_INFRA).to.be.equal('Infra');
+    expect(CAP_CATEGORY_CBRNE).to.be.equal('CBRNE');
+    expect(CAP_CATEGORY_OTHER).to.be.equal('Other');
+    expect(CAP_CATEGORIES).to.be.eql([
+      CAP_CATEGORY_CBRNE,
+      CAP_CATEGORY_ENV,
+      CAP_CATEGORY_FIRE,
+      CAP_CATEGORY_GEO,
+      CAP_CATEGORY_HEALTH,
+      CAP_CATEGORY_INFRA,
+      CAP_CATEGORY_MET,
+      CAP_CATEGORY_OTHER,
+      CAP_CATEGORY_RESCUE,
+      CAP_CATEGORY_SAFETY,
+      CAP_CATEGORY_SECURITY,
+      CAP_CATEGORY_TRANSPORT,
     ]);
   });
 });
