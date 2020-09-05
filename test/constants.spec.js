@@ -13,6 +13,12 @@ import {
   CAP_DEFAULT_SEVERITY,
   CAP_DEFAULT_CERTAINTY,
   CAP_DEFAULT_AREADESC,
+  CAP_STATUS_ACTUAL,
+  CAP_STATUS_EXERCISE,
+  CAP_STATUS_SYSTEM,
+  CAP_STATUS_TEST,
+  CAP_STATUS_DRAFT,
+  CAP_STATUSES,
 } from '../src/constants';
 
 describe('constants', () => {
@@ -62,5 +68,20 @@ describe('constants', () => {
 
   it('should have default areaDesc', () => {
     expect(CAP_DEFAULT_AREADESC).to.be.equal('Unknown');
+  });
+
+  it('should have statuses', () => {
+    expect(CAP_STATUS_ACTUAL).to.be.equal('Actual');
+    expect(CAP_STATUS_EXERCISE).to.be.equal('Exercise');
+    expect(CAP_STATUS_SYSTEM).to.be.equal('System');
+    expect(CAP_STATUS_TEST).to.be.equal('Test');
+    expect(CAP_STATUS_DRAFT).to.be.equal('Draft');
+    expect(CAP_STATUSES).to.be.eql([
+      CAP_STATUS_ACTUAL,
+      CAP_STATUS_DRAFT,
+      CAP_STATUS_EXERCISE,
+      CAP_STATUS_SYSTEM,
+      CAP_STATUS_TEST,
+    ]);
   });
 });
