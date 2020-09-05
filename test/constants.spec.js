@@ -25,6 +25,10 @@ import {
   CAP_MSGTYPE_ERROR,
   CAP_MSGTYPE_UPDATE,
   CAP_MSGTYPES,
+  CAP_SCOPE_PUBLIC,
+  CAP_SCOPE_PRIVATE,
+  CAP_SCOPE_RESTRICTED,
+  CAP_SCOPES,
 } from '../src/constants';
 
 describe('constants', () => {
@@ -104,6 +108,17 @@ describe('constants', () => {
       CAP_MSGTYPE_ERROR,
       CAP_DEFAULT_MSGTYPE,
       CAP_MSGTYPE_UPDATE,
+    ]);
+  });
+
+  it('should have scopes', () => {
+    expect(CAP_SCOPE_PUBLIC).to.be.equal('Public');
+    expect(CAP_SCOPE_RESTRICTED).to.be.equal('Restricted');
+    expect(CAP_SCOPE_PRIVATE).to.be.equal('Private');
+    expect(CAP_SCOPES).to.be.eql([
+      CAP_SCOPE_PRIVATE,
+      CAP_SCOPE_PUBLIC,
+      CAP_SCOPE_RESTRICTED,
     ]);
   });
 });

@@ -63,3 +63,14 @@ export const CAP_MSGTYPES = getStringSet('CAP_MSGTYPES', [
   CAP_MSGTYPE_ACK,
   CAP_MSGTYPE_ERROR,
 ]);
+
+// scopes
+export const CAP_SCOPE_PUBLIC = 'Public';
+export const CAP_SCOPE_RESTRICTED = 'Restricted';
+export const CAP_SCOPE_PRIVATE = 'Private';
+export const CAP_SCOPES = getStringSet('CAP_SCOPES', [
+  CAP_DEFAULT_SCOPE,
+  CAP_SCOPE_PUBLIC,
+  CAP_SCOPE_RESTRICTED,
+  CAP_SCOPE_PRIVATE,
+]);
