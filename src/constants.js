@@ -126,3 +126,18 @@ export const CAP_RESPONSETYPES = getStringSet('CAP_RESPONSETYPES', [
   CAP_RESPONSETYPE_ALLCLEAR,
   CAP_RESPONSETYPE_NONE,
 ]);
+
+// urgencies
+export const CAP_URGENCY_IMMEDIATE = 'Immediate';
+export const CAP_URGENCY_EXPECTED = 'Expected';
+export const CAP_URGENCY_FUTURE = 'Future';
+export const CAP_URGENCY_PAST = 'Past';
+export const CAP_URGENCY_UNKNOWN = 'Unknown';
+export const CAP_URGENCIES = getStringSet('CAP_URGENCIES', [
+  CAP_DEFAULT_URGENCY,
+  CAP_URGENCY_IMMEDIATE,
+  CAP_URGENCY_EXPECTED,
+  CAP_URGENCY_FUTURE,
+  CAP_URGENCY_PAST,
+  CAP_URGENCY_UNKNOWN,
+]);

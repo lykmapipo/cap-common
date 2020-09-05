@@ -52,6 +52,12 @@ import {
   CAP_RESPONSETYPE_PREPARE,
   CAP_RESPONSETYPE_SHELTER,
   CAP_RESPONSETYPES,
+  CAP_URGENCY_EXPECTED,
+  CAP_URGENCY_FUTURE,
+  CAP_URGENCY_IMMEDIATE,
+  CAP_URGENCY_PAST,
+  CAP_URGENCY_UNKNOWN,
+  CAP_URGENCIES,
 } from '../src/constants';
 
 describe('constants', () => {
@@ -194,6 +200,21 @@ describe('constants', () => {
       CAP_RESPONSETYPE_NONE,
       CAP_RESPONSETYPE_PREPARE,
       CAP_RESPONSETYPE_SHELTER,
+    ]);
+  });
+
+  it('should have urgencies', () => {
+    expect(CAP_URGENCY_IMMEDIATE).to.be.equal('Immediate');
+    expect(CAP_URGENCY_EXPECTED).to.be.equal('Expected');
+    expect(CAP_URGENCY_FUTURE).to.be.equal('Future');
+    expect(CAP_URGENCY_PAST).to.be.equal('Past');
+    expect(CAP_URGENCY_UNKNOWN).to.be.equal('Unknown');
+    expect(CAP_URGENCIES).to.be.eql([
+      CAP_URGENCY_EXPECTED,
+      CAP_URGENCY_FUTURE,
+      CAP_URGENCY_IMMEDIATE,
+      CAP_URGENCY_PAST,
+      CAP_URGENCY_UNKNOWN,
     ]);
   });
 });
