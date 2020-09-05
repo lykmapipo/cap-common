@@ -26,10 +26,10 @@ npm install @lykmapipo/cap-common --save
 ## Usage
 
 ```js
-import { CAP_STATUSES } from '@lykmapipo/cap-common';
+import { CAP_DEFAULT_STATUS, CAP_STATUSES } from '@lykmapipo/cap-common';
 
-console.log(CAP_STATUSES);
-//=> ['Actual', 'Exercise']
+console.log(CAP_DEFAULT_STATUS); //=> Draft
+console.log(CAP_STATUSES); //=> ['Actual', 'Draft', 'Exercise', ... ]
 ```
 
 ## Testing
