@@ -19,6 +19,12 @@ import {
   CAP_STATUS_TEST,
   CAP_STATUS_DRAFT,
   CAP_STATUSES,
+  CAP_MSGTYPE_ALERT,
+  CAP_MSGTYPE_ACK,
+  CAP_MSGTYPE_CANCEL,
+  CAP_MSGTYPE_ERROR,
+  CAP_MSGTYPE_UPDATE,
+  CAP_MSGTYPES,
 } from '../src/constants';
 
 describe('constants', () => {
@@ -82,6 +88,22 @@ describe('constants', () => {
       CAP_STATUS_EXERCISE,
       CAP_STATUS_SYSTEM,
       CAP_STATUS_TEST,
+    ]);
+  });
+
+  it('should have msgtypes', () => {
+    expect(CAP_MSGTYPE_ALERT).to.be.equal('Alert');
+    expect(CAP_MSGTYPE_UPDATE).to.be.equal('Update');
+    expect(CAP_MSGTYPE_CANCEL).to.be.equal('Cancel');
+    expect(CAP_MSGTYPE_ACK).to.be.equal('Ack');
+    expect(CAP_MSGTYPE_ERROR).to.be.equal('Error');
+    expect(CAP_MSGTYPES).to.be.eql([
+      CAP_MSGTYPE_ACK,
+      CAP_MSGTYPE_ALERT,
+      CAP_MSGTYPE_CANCEL,
+      CAP_MSGTYPE_ERROR,
+      CAP_DEFAULT_MSGTYPE,
+      CAP_MSGTYPE_UPDATE,
     ]);
   });
 });

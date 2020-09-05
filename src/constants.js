@@ -48,3 +48,18 @@ export const CAP_STATUSES = getStringSet('CAP_STATUSES', [
   CAP_STATUS_TEST,
   CAP_STATUS_DRAFT,
 ]);
+
+// msgtypes
+export const CAP_MSGTYPE_ALERT = 'Alert';
+export const CAP_MSGTYPE_UPDATE = 'Update';
+export const CAP_MSGTYPE_CANCEL = 'Cancel';
+export const CAP_MSGTYPE_ACK = 'Ack';
+export const CAP_MSGTYPE_ERROR = 'Error';
+export const CAP_MSGTYPES = getStringSet('CAP_MSGTYPES', [
+  CAP_DEFAULT_MSGTYPE,
+  CAP_MSGTYPE_ALERT,
+  CAP_MSGTYPE_UPDATE,
+  CAP_MSGTYPE_CANCEL,
+  CAP_MSGTYPE_ACK,
+  CAP_MSGTYPE_ERROR,
+]);
