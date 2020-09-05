@@ -51,6 +51,8 @@ export const normalizeAlert = (alert) => {
     },
   };
 
+  // TODO: apply type transformations
+
   // apply normalizations
   const normalized = mergeObjects(defaults, alert);
 
