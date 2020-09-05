@@ -64,6 +64,12 @@ import {
   CAP_SEVERITY_SEVERE,
   CAP_SEVERITY_UNKNOWN,
   CAP_SEVERITIES,
+  CAP_CERTAINTY_LIKELY,
+  CAP_CERTAINTY_OBSERVED,
+  CAP_CERTAINTY_POSSIBLE,
+  CAP_CERTAINTY_UNKNOWN,
+  CAP_CERTAINTY_UNLIKELY,
+  CAP_CERTAINTIES,
 } from '../src/constants';
 
 describe('constants', () => {
@@ -236,6 +242,21 @@ describe('constants', () => {
       CAP_SEVERITY_MODERATE,
       CAP_SEVERITY_SEVERE,
       CAP_SEVERITY_UNKNOWN,
+    ]);
+  });
+
+  it('should have certainties', () => {
+    expect(CAP_CERTAINTY_OBSERVED).to.be.equal('Observed');
+    expect(CAP_CERTAINTY_LIKELY).to.be.equal('Likely');
+    expect(CAP_CERTAINTY_POSSIBLE).to.be.equal('Possible');
+    expect(CAP_CERTAINTY_UNLIKELY).to.be.equal('Unlikely');
+    expect(CAP_CERTAINTY_UNKNOWN).to.be.equal('Unknown');
+    expect(CAP_CERTAINTIES).to.be.eql([
+      CAP_CERTAINTY_LIKELY,
+      CAP_CERTAINTY_OBSERVED,
+      CAP_CERTAINTY_POSSIBLE,
+      CAP_CERTAINTY_UNKNOWN,
+      CAP_CERTAINTY_UNLIKELY,
     ]);
   });
 });
