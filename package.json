@@ -1,7 +1,7 @@
 {
-  "name": "iso-lib-starter",
+  "name": "@lykmapipo/cap-common",
   "version": "0.1.0",
-  "description": "Starter for creating reusable, modern, isomorphic javascript libraries using rollup",
+  "description": "Common utilities for Common Alert Protocol",
   "main": "lib/index.js",
   "module": "es/index.js",
   "scripts": {
@@ -23,12 +23,18 @@
   },
   "keywords": [
     "lykmapipo",
-    "iso-lib-starter",
-    "isomophic"
+    "cap-common",
+    "common",
+    "alert",
+    "protocol",
+    "cap",
+    "utilities",
+    "helpers",
+    "constants"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lykmapipo/iso-lib-starter.git"
+    "url": "git+https://github.com/lykmapipo/cap-common.git"
   },
   "author": {
     "name": "lykmapipo",
@@ -40,29 +46,24 @@
       "name": "lykmapipo",
       "email": "lallyelias87@gmail.com",
       "url": "https://github.com/lykmapipo"
-    },
-    {
-      "name": "Benson Maruchu",
-      "email": "benmaruchu@gmail.com",
-      "url": "https://github.com/BenMaruchu"
     }
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lykmapipo/iso-lib-starter/issues",
+    "url": "https://github.com/lykmapipo/cap-common/issues",
     "email": "lallyelias87@gmail.com"
   },
-  "homepage": "https://github.com/lykmapipo/iso-lib-starter#readme",
+  "homepage": "https://github.com/lykmapipo/cap-common#readme",
   "devDependencies": {
-    "@babel/cli": "^7.11.5",
-    "@babel/core": "^7.11.5",
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.5",
     "@babel/register": "^7.11.5",
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
     "@commitlint/travis-cli": "^9.1.2",
-    "@lykmapipo/test-helpers": "^0.5.31",
+    "@lykmapipo/test-helpers": "^0.6.0",
     "chai": "^4.2.0",
     "commitizen": "^4.2.1",
     "coveralls": "^3.1.0",
@@ -79,16 +80,16 @@
     "generate-changelog": "^1.8.0",
     "handlebars": "^4.7.6",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.13",
+    "lint-staged": "^10.3.0",
     "lodash.template": "^4.5.0",
     "mime": "^2.4.6",
     "minimist": "^1.2.5",
     "mocha": "^8.1.3",
-    "npm-check-updates": "^8.0.3",
+    "npm-check-updates": "^8.1.0",
     "nyc": "^15.1.0",
     "prettier": "^2.1.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.26.9",
+    "rollup": "^2.26.10",
     "shelljs": "^0.8.4"
   },
   "peerDependencies": {},
