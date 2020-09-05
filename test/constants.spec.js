@@ -42,6 +42,16 @@ import {
   CAP_CATEGORY_SECURITY,
   CAP_CATEGORY_TRANSPORT,
   CAP_CATEGORIES,
+  CAP_RESPONSETYPE_ALLCLEAR,
+  CAP_RESPONSETYPE_ASSESS,
+  CAP_RESPONSETYPE_AVOID,
+  CAP_RESPONSETYPE_EVACUATE,
+  CAP_RESPONSETYPE_EXECUTE,
+  CAP_RESPONSETYPE_MONITOR,
+  CAP_RESPONSETYPE_NONE,
+  CAP_RESPONSETYPE_PREPARE,
+  CAP_RESPONSETYPE_SHELTER,
+  CAP_RESPONSETYPES,
 } from '../src/constants';
 
 describe('constants', () => {
@@ -108,7 +118,7 @@ describe('constants', () => {
     ]);
   });
 
-  it('should have msgtypes', () => {
+  it('should have msgTypes', () => {
     expect(CAP_MSGTYPE_ALERT).to.be.equal('Alert');
     expect(CAP_MSGTYPE_UPDATE).to.be.equal('Update');
     expect(CAP_MSGTYPE_CANCEL).to.be.equal('Cancel');
@@ -161,6 +171,29 @@ describe('constants', () => {
       CAP_CATEGORY_SAFETY,
       CAP_CATEGORY_SECURITY,
       CAP_CATEGORY_TRANSPORT,
+    ]);
+  });
+
+  it('should have responseTypes', () => {
+    expect(CAP_RESPONSETYPE_SHELTER).to.be.equal('Shelter');
+    expect(CAP_RESPONSETYPE_EVACUATE).to.be.equal('Evacuate');
+    expect(CAP_RESPONSETYPE_PREPARE).to.be.equal('Prepare');
+    expect(CAP_RESPONSETYPE_EXECUTE).to.be.equal('Execute');
+    expect(CAP_RESPONSETYPE_AVOID).to.be.equal('Avoid');
+    expect(CAP_RESPONSETYPE_MONITOR).to.be.equal('Monitor');
+    expect(CAP_RESPONSETYPE_ASSESS).to.be.equal('Assess');
+    expect(CAP_RESPONSETYPE_ALLCLEAR).to.be.equal('AllClear');
+    expect(CAP_RESPONSETYPE_NONE).to.be.equal('None');
+    expect(CAP_RESPONSETYPES).to.be.eql([
+      CAP_RESPONSETYPE_ALLCLEAR,
+      CAP_RESPONSETYPE_ASSESS,
+      CAP_RESPONSETYPE_AVOID,
+      CAP_RESPONSETYPE_EVACUATE,
+      CAP_RESPONSETYPE_EXECUTE,
+      CAP_RESPONSETYPE_MONITOR,
+      CAP_RESPONSETYPE_NONE,
+      CAP_RESPONSETYPE_PREPARE,
+      CAP_RESPONSETYPE_SHELTER,
     ]);
   });
 });
