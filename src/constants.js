@@ -141,3 +141,18 @@ export const CAP_URGENCIES = getStringSet('CAP_URGENCIES', [
   CAP_URGENCY_PAST,
   CAP_URGENCY_UNKNOWN,
 ]);
+
+// severities
+export const CAP_SEVERITY_EXTREME = 'Extreme';
+export const CAP_SEVERITY_SEVERE = 'Severe';
+export const CAP_SEVERITY_MODERATE = 'Moderate';
+export const CAP_SEVERITY_MINOR = 'Minor';
+export const CAP_SEVERITY_UNKNOWN = 'Unknown';
+export const CAP_SEVERITIES = getStringSet('CAP_SEVERITIES', [
+  CAP_DEFAULT_SEVERITY,
+  CAP_SEVERITY_EXTREME,
+  CAP_SEVERITY_SEVERE,
+  CAP_SEVERITY_MODERATE,
+  CAP_SEVERITY_MINOR,
+  CAP_SEVERITY_UNKNOWN,
+]);

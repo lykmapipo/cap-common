@@ -58,6 +58,12 @@ import {
   CAP_URGENCY_PAST,
   CAP_URGENCY_UNKNOWN,
   CAP_URGENCIES,
+  CAP_SEVERITY_EXTREME,
+  CAP_SEVERITY_MINOR,
+  CAP_SEVERITY_MODERATE,
+  CAP_SEVERITY_SEVERE,
+  CAP_SEVERITY_UNKNOWN,
+  CAP_SEVERITIES,
 } from '../src/constants';
 
 describe('constants', () => {
@@ -215,6 +221,21 @@ describe('constants', () => {
       CAP_URGENCY_IMMEDIATE,
       CAP_URGENCY_PAST,
       CAP_URGENCY_UNKNOWN,
+    ]);
+  });
+
+  it('should have severities', () => {
+    expect(CAP_SEVERITY_EXTREME).to.be.equal('Extreme');
+    expect(CAP_SEVERITY_SEVERE).to.be.equal('Severe');
+    expect(CAP_SEVERITY_MODERATE).to.be.equal('Moderate');
+    expect(CAP_SEVERITY_MINOR).to.be.equal('Minor');
+    expect(CAP_SEVERITY_UNKNOWN).to.be.equal('Unknown');
+    expect(CAP_SEVERITIES).to.be.eql([
+      CAP_SEVERITY_EXTREME,
+      CAP_SEVERITY_MINOR,
+      CAP_SEVERITY_MODERATE,
+      CAP_SEVERITY_SEVERE,
+      CAP_SEVERITY_UNKNOWN,
     ]);
   });
 });
