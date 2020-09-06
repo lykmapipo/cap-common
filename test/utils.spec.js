@@ -15,9 +15,79 @@ import {
   CAP_STATUS_ACTUAL,
   CAP_SEVERITY_EXTREME,
 } from '../src/constants';
-import { normalizeAlert } from '../src/utils';
+import { normalizeAlertDates, normalizeAlert } from '../src/utils';
 
-describe('utils', () => {
+describe.only('utils', () => {
+  it('should normalize aler dates with no info', () => {
+    const alert = {
+      sent: '2020-08-09T12:48:58.000Z',
+    };
+    const normalized = normalizeAlertDates(alert);
+
+    expect(normalized).to.exist.and.be.an('object');
+    expect(normalized.sent).to.be.an.instanceof(Date);
+    expect(normalized.sent).to.be.eql(new Date(alert.sent));
+
+    expect(normalized.info.effective).to.be.an.instanceof(Date);
+    expect(normalized.info.effective).to.be.eql(new Date(alert.sent));
+    expect(normalized.info.effective).to.be.eql(normalized.sent);
+
+    expect(normalized.info.onset).to.be.an.instanceof(Date);
+    expect(normalized.info.onset).to.be.eql(new Date(alert.sent));
+    expect(normalized.info.onset).to.be.eql(normalized.sent);
+    expect(normalized.info.onset).to.be.eql(normalized.info.onset);
+
+    expect(normalized.info.expires).to.be.undefined;
+  });
+
+  it('should normalize aler dates with expires specified', () => {
+    const alert = {
+      sent: '2020-08-09T12:48:58.000Z',
+      info: { expires: '2020-08-10T12:48:58.000Z' },
+    };
+    const normalized = normalizeAlertDates(alert);
+
+    expect(normalized).to.exist.and.be.an('object');
+    expect(normalized.sent).to.be.an.instanceof(Date);
+    expect(normalized.sent).to.be.eql(new Date(alert.sent));
+
+    expect(normalized.info.effective).to.be.an.instanceof(Date);
+    expect(normalized.info.effective).to.be.eql(new Date(alert.sent));
+    expect(normalized.info.effective).to.be.eql(normalized.sent);
+
+    expect(normalized.info.onset).to.be.an.instanceof(Date);
+    expect(normalized.info.onset).to.be.eql(new Date(alert.sent));
+    expect(normalized.info.onset).to.be.eql(normalized.sent);
+    expect(normalized.info.onset).to.be.eql(normalized.info.onset);
+
+    expect(normalized.info.expires).to.be.an.instanceof(Date);
+    expect(normalized.info.expires).to.be.eql(new Date(alert.info.expires));
+  });
+
+  it('should normalize aler dates with all dates specified', () => {
+    const alert = {
+      sent: '2020-08-09T12:48:58.000Z',
+      info: {
+        effective: '2020-08-09T12:48:58.000Z',
+        onset: '2020-08-09T13:48:58.000Z',
+        expires: '2020-08-10T12:48:58.000Z',
+      },
+    };
+    const normalized = normalizeAlertDates(alert);
+    expect(normalized).to.exist.and.be.an('object');
+    expect(normalized.sent).to.be.an.instanceof(Date);
+    expect(normalized.sent).to.be.eql(new Date(alert.sent));
+
+    expect(normalized.info.effective).to.be.an.instanceof(Date);
+    expect(normalized.info.effective).to.be.eql(new Date(alert.info.effective));
+
+    expect(normalized.info.onset).to.be.an.instanceof(Date);
+    expect(normalized.info.onset).to.be.eql(new Date(alert.info.onset));
+
+    expect(normalized.info.expires).to.be.an.instanceof(Date);
+    expect(normalized.info.expires).to.be.eql(new Date(alert.info.expires));
+  });
+
   it('should normalize given alert with defaults', () => {
     const alert = {};
     const normalized = normalizeAlert(alert);
