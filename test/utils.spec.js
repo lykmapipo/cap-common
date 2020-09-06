@@ -1,3 +1,4 @@
+import { mergeObjects } from '@lykmapipo/common';
 import { expect } from '@lykmapipo/test-helpers';
 import { isGeometry, isPoint } from '@lykmapipo/geo-tools';
 
@@ -21,6 +22,8 @@ import {
   normalizeAlertGeos,
   normalizeAlert,
 } from '../src/utils';
+
+import sampleAlert from './fixtures/alert.json';
 
 describe.only('utils', () => {
   it('should normalize alert dates with no info', () => {
@@ -151,5 +154,44 @@ describe.only('utils', () => {
     expect(normalized.info.severity).to.be.equal(CAP_SEVERITY_EXTREME);
     expect(normalized.info.certainty).to.be.equal(CAP_DEFAULT_CERTAINTY);
     expect(normalized.info.area.areaDesc).to.be.equal(CAP_DEFAULT_AREADESC);
+  });
+
+  it('should normalize full alert', () => {
+    const alert = mergeObjects(sampleAlert);
+    const normalized = normalizeAlert(alert);
+
+    expect(normalized).to.exist.and.be.an('object');
+    expect(normalized.info).to.exist.and.be.an('object');
+    expect(normalized.info.area).to.exist.and.be.an('object');
+    expect(normalized.status).to.be.equal(alert.status);
+    expect(normalized.msgType).to.be.equal(alert.msgType);
+    expect(normalized.scope).to.be.equal(alert.scope);
+    expect(normalized.info.language).to.be.equal(alert.info.language);
+    expect(normalized.info.category).to.be.equal(alert.info.category);
+    expect(normalized.info.event).to.be.equal(alert.info.event);
+    expect(normalized.info.responseType).to.be.equal(alert.info.responseType);
+    expect(normalized.info.urgency).to.be.equal(alert.info.urgency);
+    expect(normalized.info.severity).to.be.equal(alert.info.severity);
+    expect(normalized.info.certainty).to.be.equal(alert.info.certainty);
+    expect(normalized.info.area.areaDesc).to.be.equal(alert.info.area.areaDesc);
+
+    expect(normalized.sent).to.be.an.instanceof(Date);
+    expect(normalized.sent).to.be.eql(new Date(alert.sent));
+
+    expect(normalized.info.effective).to.be.an.instanceof(Date);
+    expect(normalized.info.effective).to.be.eql(
+      new Date(alert.info.effective || alert.sent)
+    );
+
+    expect(normalized.info.onset).to.be.an.instanceof(Date);
+    expect(normalized.info.onset).to.be.eql(new Date(alert.info.onset));
+
+    expect(normalized.info.expires).to.be.an.instanceof(Date);
+    expect(normalized.info.expires).to.be.eql(new Date(alert.info.expires));
+
+    expect(normalized.info.area.geometry).to.exist.an.be.an('object');
+    expect(isGeometry(normalized.info.area.geometry)).to.be.true;
+    expect(normalized.info.area.centroid).to.exist.and.be.an('object');
+    expect(isPoint(normalized.info.area.centroid)).to.be.true;
   });
 });
