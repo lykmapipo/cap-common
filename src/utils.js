@@ -1,4 +1,5 @@
 import { isValue, mergeObjects } from '@lykmapipo/common';
+import { parseCoordinateString, centroidOf } from '@lykmapipo/geo-tools';
 
 import {
   CAP_DEFAULT_STATUS,
@@ -80,6 +81,45 @@ export const normalizeAlertDates = (alert) => {
 };
 
 /**
+ * @function normalizeAlertGeos
+ * @name normalizeAlertGeos
+ * @description Normalize alert geo fields and applying defaults
+ * @param {object} alert valid alert in json format.
+ * @returns {object} normalize alert.
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.2.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * normalizeAlertGeos(alert);
+ * //=> { info: { area: { geometry: ..., centroid: ... } }, ... }
+ */
+export const normalizeAlertGeos = (alert) => {
+  // ensure alert info
+  const normalizedAlert = mergeObjects(EMPTY_ALERT, alert);
+
+  // parse circle and polygon to geojson geometry
+  const hasGeoFields =
+    isValue(normalizedAlert.info.area.polygon) ||
+    isValue(normalizedAlert.info.area.circle);
+
+  if (hasGeoFields) {
+    const coordinateString =
+      normalizedAlert.info.area.polygon || normalizedAlert.info.area.circle;
+    const geometry = parseCoordinateString(coordinateString);
+    const centroid = centroidOf(geometry);
+    normalizedAlert.info.area.geometry = geometry;
+    normalizedAlert.info.area.centroid = centroid;
+  }
+
+  // return normalized alert
+  return normalizedAlert;
+};
+
+/**
  * @function normalizeAlert
  * @name normalizeAlert
  * @description Normalize a given alert by applying defaults
@@ -98,13 +138,16 @@ export const normalizeAlertDates = (alert) => {
  */
 export const normalizeAlert = (alert) => {
   // merge defaults
-  let normalized = mergeObjects(DEFAULT_ALERT, alert);
+  let normalizedAlert = mergeObjects(DEFAULT_ALERT, alert);
 
   // normalize dates
-  normalized = normalizeAlertDates(normalized);
+  normalizedAlert = normalizeAlertDates(normalizedAlert);
 
-  // return normalized alert
-  return normalized;
+  // normalize geo fields
+  normalizedAlert = normalizeAlertGeos(normalizedAlert);
+
+  // return normalize alert
+  return normalizedAlert;
 };
 
 export const isValidAlert = (/* alert */) => {

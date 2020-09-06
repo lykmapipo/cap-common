@@ -96,6 +96,7 @@
   "dependencies": {
     "@lykmapipo/common": "^0.40.0",
     "@lykmapipo/env": ">=0.17.18",
+    "@lykmapipo/geo-tools": ">=0.7.15",
     "lodash": ">=4.17.20"
   },
   "engines": {

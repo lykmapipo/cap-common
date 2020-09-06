@@ -1,4 +1,5 @@
 import { expect } from '@lykmapipo/test-helpers';
+import { isGeometry, isPoint } from '@lykmapipo/geo-tools';
 
 import {
   CAP_DEFAULT_STATUS,
@@ -15,10 +16,14 @@ import {
   CAP_STATUS_ACTUAL,
   CAP_SEVERITY_EXTREME,
 } from '../src/constants';
-import { normalizeAlertDates, normalizeAlert } from '../src/utils';
+import {
+  normalizeAlertDates,
+  normalizeAlertGeos,
+  normalizeAlert,
+} from '../src/utils';
 
 describe.only('utils', () => {
-  it('should normalize aler dates with no info', () => {
+  it('should normalize alert dates with no info', () => {
     const alert = {
       sent: '2020-08-09T12:48:58.000Z',
     };
@@ -40,7 +45,7 @@ describe.only('utils', () => {
     expect(normalized.info.expires).to.be.undefined;
   });
 
-  it('should normalize aler dates with expires specified', () => {
+  it('should normalize alert dates with expires specified', () => {
     const alert = {
       sent: '2020-08-09T12:48:58.000Z',
       info: { expires: '2020-08-10T12:48:58.000Z' },
@@ -64,7 +69,7 @@ describe.only('utils', () => {
     expect(normalized.info.expires).to.be.eql(new Date(alert.info.expires));
   });
 
-  it('should normalize aler dates with all dates specified', () => {
+  it('should normalize alert dates with all dates specified', () => {
     const alert = {
       sent: '2020-08-09T12:48:58.000Z',
       info: {
@@ -86,6 +91,23 @@ describe.only('utils', () => {
 
     expect(normalized.info.expires).to.be.an.instanceof(Date);
     expect(normalized.info.expires).to.be.eql(new Date(alert.info.expires));
+  });
+
+  it('should normalize alert polygon to geometry', () => {
+    const alert = {
+      info: {
+        area: {
+          polygon:
+            '-4.7,39.3 -5.2,38.6 -6.1,38.5 -6.9,39.3 -7.6,39.1 -8.4,39 -9.4,39.3 -10.4,39.7 -10.6,40.2 -10.1,40.6 -9.7,40.8 -9,40.3 -8.4,40 -6.8,40.2 -6.1,40.1 -5.2,39.9 -4.9,39.8 -4.7,39.3',
+        },
+      },
+    };
+    const normalized = normalizeAlertGeos(alert);
+
+    expect(normalized.info.area.geometry).to.exist.an.be.an('object');
+    expect(isGeometry(normalized.info.area.geometry)).to.be.true;
+    expect(normalized.info.area.centroid).to.exist.and.be.an('object');
+    expect(isPoint(normalized.info.area.centroid)).to.be.true;
   });
 
   it('should normalize given alert with defaults', () => {
