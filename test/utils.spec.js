@@ -133,6 +133,7 @@ describe.only('utils', () => {
     expect(normalized.info.severity).to.be.equal(CAP_DEFAULT_SEVERITY);
     expect(normalized.info.certainty).to.be.equal(CAP_DEFAULT_CERTAINTY);
     expect(normalized.info.area.areaDesc).to.be.equal(CAP_DEFAULT_AREADESC);
+    expect(normalized.hash).to.exist;
   });
 
   it('should normalize alert and ignore defaults', () => {
@@ -157,6 +158,7 @@ describe.only('utils', () => {
     expect(normalized.info.severity).to.be.equal(CAP_SEVERITY_EXTREME);
     expect(normalized.info.certainty).to.be.equal(CAP_DEFAULT_CERTAINTY);
     expect(normalized.info.area.areaDesc).to.be.equal(CAP_DEFAULT_AREADESC);
+    expect(normalized.hash).to.exist;
   });
 
   it('should normalize full alert', () => {
@@ -196,6 +198,8 @@ describe.only('utils', () => {
     expect(isGeometry(normalized.info.area.geometry)).to.be.true;
     expect(normalized.info.area.centroid).to.exist.and.be.an('object');
     expect(isPoint(normalized.info.area.centroid)).to.be.true;
+
+    expect(normalized.hash).to.exist;
   });
 
   it('should validate alert partially', () => {

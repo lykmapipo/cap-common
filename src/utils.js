@@ -1,4 +1,4 @@
-import { firstValue, isValue, mergeObjects } from '@lykmapipo/common';
+import { firstValue, hashOf, isValue, mergeObjects } from '@lykmapipo/common';
 import { parseCoordinateString, centroidOf } from '@lykmapipo/geo-tools';
 
 import {
@@ -146,6 +146,9 @@ export const normalizeAlert = (alert) => {
   // normalize geo fields
   normalizedAlert = normalizeAlertGeos(normalizedAlert);
 
+  // compute hash
+  normalizedAlert.hash = hashOf(normalizedAlert);
+
   // return normalize alert
   return normalizedAlert;
 };
@@ -219,3 +222,7 @@ export const isValidAlert = (alert, optns) => {
     isValue(copyOfAlert.info.area.areaDesc);
   return isFullAlert;
 };
+
+// TODO: convertAlertToFeature
+// TODO: convertAlertToGeoJSON
+// TODO: simplifyAlert
