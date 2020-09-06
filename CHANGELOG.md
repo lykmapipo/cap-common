@@ -1,3 +1,19 @@
+#### 0.2.0 (2020-09-06)
+
+##### New Features
+
+- **utils:**
+  - compute alert hash ([58427a9a](https://github.com/lykmapipo/cap-common/commit/58427a9acbd2f9b93650eaa11cda9bbee3e6b303))
+  - allow partial & fully alert validation ([19f8d18f](https://github.com/lykmapipo/cap-common/commit/19f8d18f74952621520c0452a0dcfd785f44b01c))
+  - normalize full alert object ([9a230129](https://github.com/lykmapipo/cap-common/commit/9a230129b5ecd587eb9a395bb4f66c399ef39113))
+  - normalize alert geo fields ([01f35ca9](https://github.com/lykmapipo/cap-common/commit/01f35ca92927e2b1a896ed4277188a3f881b7c75))
+  - normalize dates ([c419b6e0](https://github.com/lykmapipo/cap-common/commit/c419b6e026666515128afd6b0cbdfc6966da9277))
+  - normalize alerts with defaults ([70bb9a5f](https://github.com/lykmapipo/cap-common/commit/70bb9a5f7d909a17a8e8916ae7df1b321dee42b6))
+
+##### Tests
+
+- **utils:** improve normalize test cases ([fa9adb66](https://github.com/lykmapipo/cap-common/commit/fa9adb66831cf8e57ca568be420ced1b206766d0))
+
 #### 0.1.0 (2020-09-05)
 
 ##### Documentation Changes
