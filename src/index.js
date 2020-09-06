@@ -7,4 +7,4 @@
  */
 
 export * from './constants';
-export { normalizeAlert } from './utils';
+export { normalizeAlert, isValidAlert } from './utils';

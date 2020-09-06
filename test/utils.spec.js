@@ -18,9 +18,12 @@ import {
   CAP_SEVERITY_EXTREME,
 } from '../src/constants';
 import {
+  EMPTY_ALERT,
+  DEFAULT_ALERT,
   normalizeAlertDates,
   normalizeAlertGeos,
   normalizeAlert,
+  isValidAlert,
 } from '../src/utils';
 
 import sampleAlert from './fixtures/alert.json';
@@ -193,5 +196,23 @@ describe.only('utils', () => {
     expect(isGeometry(normalized.info.area.geometry)).to.be.true;
     expect(normalized.info.area.centroid).to.exist.and.be.an('object');
     expect(isPoint(normalized.info.area.centroid)).to.be.true;
+  });
+
+  it('should validate alert partially', () => {
+    expect(isValidAlert({}, { partial: true })).to.be.false;
+    expect(isValidAlert(EMPTY_ALERT, { partial: true })).to.be.false;
+    expect(isValidAlert(DEFAULT_ALERT, { partial: true })).to.be.false;
+    expect(isValidAlert(normalizeAlert(DEFAULT_ALERT), { partial: true })).to.be
+      .false;
+    expect(isValidAlert(normalizeAlert(sampleAlert), { partial: true })).to.be
+      .true;
+  });
+
+  it('should validate alert fully', () => {
+    expect(isValidAlert({})).to.be.false;
+    expect(isValidAlert(EMPTY_ALERT)).to.be.false;
+    expect(isValidAlert(DEFAULT_ALERT)).to.be.false;
+    expect(isValidAlert(normalizeAlert(DEFAULT_ALERT))).to.be.false;
+    expect(isValidAlert(normalizeAlert(sampleAlert))).to.be.true;
   });
 });

@@ -1,4 +1,4 @@
-import { isValue, mergeObjects } from '@lykmapipo/common';
+import { firstValue, isValue, mergeObjects } from '@lykmapipo/common';
 import { parseCoordinateString, centroidOf } from '@lykmapipo/geo-tools';
 
 import {
@@ -16,9 +16,9 @@ import {
 } from './constants';
 
 // constants
-const EMPTY_ALERT = { info: { area: {} } };
-const DEFAULT_ALERT_AREA = { areaDesc: CAP_DEFAULT_AREADESC };
-const DEFAULT_ALERT_INFO = {
+export const EMPTY_ALERT = { info: { area: {} } };
+export const DEFAULT_ALERT_AREA = { areaDesc: CAP_DEFAULT_AREADESC };
+export const DEFAULT_ALERT_INFO = {
   language: CAP_DEFAULT_LANGUAGE,
   category: CAP_DEFAULT_CATEGORY,
   event: CAP_DEFAULT_EVENT,
@@ -28,7 +28,7 @@ const DEFAULT_ALERT_INFO = {
   certainty: CAP_DEFAULT_CERTAINTY,
   area: DEFAULT_ALERT_AREA,
 };
-const DEFAULT_ALERT = {
+export const DEFAULT_ALERT = {
   status: CAP_DEFAULT_STATUS,
   msgType: CAP_DEFAULT_MSGTYPE,
   scope: CAP_DEFAULT_SCOPE,
@@ -102,13 +102,13 @@ export const normalizeAlertGeos = (alert) => {
   const normalizedAlert = mergeObjects(EMPTY_ALERT, alert);
 
   // parse circle and polygon to geojson geometry
-  const hasGeoFields =
-    isValue(normalizedAlert.info.area.polygon) ||
-    isValue(normalizedAlert.info.area.circle);
+  const coordinateString = firstValue(
+    normalizedAlert.info.area.polygon,
+    normalizedAlert.info.area.circle
+  );
+  const hasGeoFields = isValue(coordinateString);
 
   if (hasGeoFields) {
-    const coordinateString =
-      normalizedAlert.info.area.polygon || normalizedAlert.info.area.circle;
     const geometry = parseCoordinateString(coordinateString);
     const centroid = centroidOf(geometry);
     normalizedAlert.info.area.geometry = geometry;
@@ -150,6 +150,72 @@ export const normalizeAlert = (alert) => {
   return normalizedAlert;
 };
 
-export const isValidAlert = (/* alert */) => {
-  return true;
+/**
+ * @function isValid
+ * @name isValid
+ * @description Check validity of given alert after normalize
+ *
+ * Note: A valid alert should answer these key questions:
+ * - What is happening?
+ * - When is it happening?
+ * - What should people do?
+ * - Where do alerts go?
+ *
+ * @param {object} alert valid alert in json format.
+ * @param {object} [optns] validation options.
+ * @param {boolean} [optns.partial=false] whether to perform partial validation
+ * @returns {boolean} true if valid else false
+ * @author lally elias <lallyelias87@mail.com>
+ * @license MIT
+ * @since 0.2.0
+ * @version 0.1.0
+ * @static
+ * @public
+ * @example
+ *
+ * isValid(alert);
+ * //=> true
+ */
+export const isValidAlert = (alert, optns) => {
+  // ensure alert
+  const copyOfAlert = mergeObjects(EMPTY_ALERT, alert);
+
+  // ensure options
+  const { partial = false } = mergeObjects(optns);
+
+  // parform partial validation
+  // same as google
+  if (partial) {
+    const isPartialAlert =
+      isValue(copyOfAlert.info) &&
+      isValue(copyOfAlert.info.event) &&
+      isValue(copyOfAlert.info.effective) &&
+      isValue(copyOfAlert.info.expires) &&
+      isValue(copyOfAlert.info.instruction) &&
+      isValue(copyOfAlert.info.area) &&
+      isValue(copyOfAlert.info.area.areaDesc);
+    return isPartialAlert;
+  }
+
+  // peform full validation
+  // same as specs
+  const isFullAlert =
+    isValue(copyOfAlert.identifier) &&
+    isValue(copyOfAlert.sender) &&
+    isValue(copyOfAlert.sent) &&
+    isValue(copyOfAlert.status) &&
+    isValue(copyOfAlert.msgType) &&
+    isValue(copyOfAlert.scope) &&
+    isValue(copyOfAlert.info) &&
+    isValue(copyOfAlert.info.category) &&
+    isValue(copyOfAlert.info.event) &&
+    isValue(copyOfAlert.info.urgency) &&
+    isValue(copyOfAlert.info.severity) &&
+    isValue(copyOfAlert.info.certainty) &&
+    isValue(copyOfAlert.info.effective) &&
+    isValue(copyOfAlert.info.expires) &&
+    isValue(copyOfAlert.info.instruction) &&
+    isValue(copyOfAlert.info.area) &&
+    isValue(copyOfAlert.info.area.areaDesc);
+  return isFullAlert;
 };
