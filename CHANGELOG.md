@@ -1,3 +1,9 @@
+#### 0.2.3 (2020-10-05)
+
+##### Chores
+
+- **deps:** force latest version & audit fix ([bbc15ad8](https://github.com/lykmapipo/cap-common/commit/bbc15ad8f016fd3561540c42eace4e3a4becd8b0))
+
 #### 0.2.2 (2020-09-23)
 
 #### 0.2.1 (2020-09-10)
