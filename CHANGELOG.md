@@ -1,3 +1,9 @@
+#### 0.2.4 (2020-12-06)
+
+##### Chores
+
+- **deps:** force latest version & audit fix ([486fcfb0](https://github.com/lykmapipo/cap-common/commit/486fcfb05908c07bf5cae6548ebce72516b27597))
+
 #### 0.2.3 (2020-10-05)
 
 ##### Chores
