@@ -1,3 +1,18 @@
+#### 0.2.9 (2021-09-06)
+
+##### Chores
+
+* **deps:**
+  *  force latest version & audit fix ([b02d4f5f](https://github.com/lykmapipo/cap-common/commit/b02d4f5fef5764a917897ad3564ab404fa93423f))
+  *  force latest version ([18eda4c8](https://github.com/lykmapipo/cap-common/commit/18eda4c87f8dc82ded48db51b8a9698bf7edcc84))
+*  improve package scripts ([ee04437c](https://github.com/lykmapipo/cap-common/commit/ee04437ca804eff771d0e702a49a82f6510c62f5))
+
+##### Documentation Changes
+
+* **readme:**
+  *  update travis badge source ([db13e71c](https://github.com/lykmapipo/cap-common/commit/db13e71c1dc39fb8d14d0158be9018540e16e9bc))
+  *  update travis badge source ([78b194ff](https://github.com/lykmapipo/cap-common/commit/78b194ff2b285e37465d7a8c4ade6404abed7754))
+
 #### 0.2.8 (2021-02-10)
 
 ##### Chores
