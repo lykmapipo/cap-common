@@ -163,7 +163,6 @@ export const normalizeAlert = (alert) => {
  * - When is it happening?
  * - What should people do?
  * - Where do alerts go?
- *
  * @param {object} alert valid alert in json format.
  * @param {object} [optns] validation options.
  * @param {boolean} [optns.partial=false] whether to perform partial validation
