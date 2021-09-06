@@ -1,6 +1,6 @@
 # cap-common
 
-[![Build Status](https://travis-ci.org/lykmapipo/cap-common.svg?branch=master)](https://travis-ci.org/lykmapipo/cap-common)
+[![Build Status](https://travis-ci.com/lykmapipo/cap-common.svg?branch=master)](https://travis-ci.com/lykmapipo/cap-common)
 [![Dependencies Status](https://david-dm.org/lykmapipo/cap-common.svg)](https://david-dm.org/lykmapipo/cap-common)
 [![Coverage Status](https://coveralls.io/repos/github/lykmapipo/cap-common/badge.svg?branch=master)](https://coveralls.io/github/lykmapipo/cap-common?branch=master)
 [![GitHub License](https://img.shields.io/github/license/lykmapipo/cap-common)](https://github.com/lykmapipo/cap-common/blob/develop/LICENSE)
